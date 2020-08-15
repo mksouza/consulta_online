@@ -18,6 +18,18 @@ public class TipoAgendamentoConsulta {
 	
 	@Column(name = "tipo")
 	private String tipo;
+	
+	
+
+	public TipoAgendamentoConsulta() {
+		
+	}
+
+	public TipoAgendamentoConsulta(Long idTipoAgendamentoConsulta, String tipo) {
+		super();
+		this.idTipoAgendamentoConsulta = idTipoAgendamentoConsulta;
+		this.tipo = tipo;
+	}
 
 	public Long getIdTipoAgendamentoConsulta() {
 		return idTipoAgendamentoConsulta;

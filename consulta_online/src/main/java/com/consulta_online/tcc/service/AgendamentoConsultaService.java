@@ -38,5 +38,9 @@ public class AgendamentoConsultaService {
 		return agendamentoConsultaRepository.findAll();
 	}
 	
+   public AgendamentoConsulta salvar(AgendamentoConsulta consulta) {
+	   return agendamentoConsultaRepository.save(consulta);
+   }
+	
 	
 }

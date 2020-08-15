@@ -1,4 +1,4 @@
-package com.consulta_online.tcc.controller;
+package com.consulta_online.tcc.controllers;
 
 
 
@@ -7,7 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,16 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.consulta_online.tcc.model.AgendamentoConsulta;
 import com.consulta_online.tcc.model.Especialidade;
 import com.consulta_online.tcc.model.Medico;
+import com.consulta_online.tcc.model.TipoAgendamentoConsulta;
 import com.consulta_online.tcc.service.AgendamentoConsultaService;
 import com.consulta_online.tcc.service.EspecialidadeService;
 import com.consulta_online.tcc.service.MedicoService;
 import com.consulta_online.tcc.service.StatusConsultaService;
 import com.consulta_online.tcc.service.TipoAgendamentoConsultaService;
-import com.consulta_online.tcc.service.UsuarioPacienteService;
 
 
 
 
+
+
+
+@CrossOrigin(origins = "*") // "http://localhost:4200"
 @RestController
 @RequestMapping(value = "/agendamento")
 public class AgendamentoConsultaController {
@@ -36,8 +42,8 @@ public class AgendamentoConsultaController {
 	private AgendamentoConsultaService agendamentoConsultaService;
 	private EspecialidadeService especialidadeService;
 	private TipoAgendamentoConsultaService tipoAgendamentoConsultaService;
-	private UsuarioPacienteService usuarioPacienteService;
-	private StatusConsultaService statusConsultaService;
+	//private UsuarioPacienteService usuarioPacienteService;
+	//private StatusConsultaService statusConsultaService;
 	private MedicoService medicoservice;
 	
 
@@ -45,21 +51,20 @@ public class AgendamentoConsultaController {
 	public AgendamentoConsultaController(AgendamentoConsultaService agendamentoConsultaService, 
 	    EspecialidadeService especialidadeService,
 	    TipoAgendamentoConsultaService tipoAgendamentoConsultaService,
-	    UsuarioPacienteService usuarioPacienteService,
 	    StatusConsultaService statusConsultaService,
 	    MedicoService medicoservice) {
 		
 		this.agendamentoConsultaService = agendamentoConsultaService;
 		this.especialidadeService = especialidadeService;
 		this.tipoAgendamentoConsultaService = tipoAgendamentoConsultaService;
-		this.usuarioPacienteService = usuarioPacienteService;
-		this.statusConsultaService = statusConsultaService;
+		//this.usuarioPacienteService = usuarioPacienteService;
+		//this.statusConsultaService = statusConsultaService;
 		this.medicoservice = medicoservice;
 	}
 	
 	
 	
-	@GetMapping(value ="/por/{id}")
+	@GetMapping(value ="/admin/{id}")
 	public ResponseEntity<List<AgendamentoConsulta>> listar(@PathVariable(value = "id")long id) {
 
 		List<AgendamentoConsulta> lista = agendamentoConsultaService.listarporId(id);
@@ -68,7 +73,8 @@ public class AgendamentoConsultaController {
 	}
 	
 	
-	@GetMapping(value ="/por-todos")
+	@GetMapping(value = "/admin")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<List<AgendamentoConsulta>> listartodos() {
 
 		List<AgendamentoConsulta> lista = agendamentoConsultaService.listarTodos();
@@ -88,7 +94,8 @@ public class AgendamentoConsultaController {
 	}
 	
 	
-	@GetMapping(value ="/espec-todos")
+	@GetMapping(value ="user/espec-todos")
+	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public ResponseEntity<List<Especialidade>> listarEspectodos() {
 
 		List<Especialidade> lista = especialidadeService.listarTodos();
@@ -116,6 +123,18 @@ public class AgendamentoConsultaController {
 	}
 	
 	
+	@GetMapping(value ="/tipo-todos")
+	public ResponseEntity<List<TipoAgendamentoConsulta>> listarTipoTodos() {
+
+		List<TipoAgendamentoConsulta> lista = tipoAgendamentoConsultaService.listarTodos();
+		return ResponseEntity.ok(lista);
+	}
+	
+	@PostMapping(value = "salvar-consulta/user")
+	//@PreAuthorize("hasRole('USER')")
+	public AgendamentoConsulta salvaProduto(@RequestBody @Validated AgendamentoConsulta consulta) {
+		return agendamentoConsultaService.salvar(consulta);
+	}
 
 /*
 	@GetMapping(value = "/produto")

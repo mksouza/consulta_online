@@ -19,6 +19,19 @@ public class StatusConsulta {
 	
 	@Column(name = "situacao")
 	private String situacao;
+	
+	
+	
+
+	public StatusConsulta() {
+		
+	}
+
+	public StatusConsulta( String situacao) {
+		
+
+		this.situacao = situacao;
+	}
 
 	public Long getIdStatusConsulta() {
 		return idStatusConsulta;
@@ -35,7 +48,7 @@ public class StatusConsulta {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
-
+   
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -60,13 +73,5 @@ public class StatusConsulta {
 			return false;
 		return true;
 	}
-	
-	
-
-	
-
-	
-	
-	
 	
 }

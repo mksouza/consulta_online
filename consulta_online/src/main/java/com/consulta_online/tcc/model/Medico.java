@@ -12,9 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name = "medico")
 public class Medico {
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +29,17 @@ public class Medico {
 	
 	@Column(name = "crm")
 	private Integer crm;
-	
+/*
  @ManyToOne
  @JoinColumn(name = "id_especialidade", foreignKey = @ForeignKey( name ="id_especialidade"))
   private Especialidade especialidade;
- 
+*/ 
+
+
+public Medico() {
+	super();
+}
+
 
 
 public Long getIdMedico() {
@@ -57,23 +66,19 @@ public void setCrm(Integer crm) {
 	this.crm = crm;
 }
 
-public Especialidade getEspecialidade() {
-	return especialidade;
-}
-
-public void setEspecialidade(Especialidade especialidade) {
-	this.especialidade = especialidade;
-}
 
 
 @Override
 public int hashCode() {
 	final int prime = 31;
 	int result = 1;
-	result = prime * result + ((especialidade == null) ? 0 : especialidade.hashCode());
+	result = prime * result + ((crm == null) ? 0 : crm.hashCode());
 	result = prime * result + ((idMedico == null) ? 0 : idMedico.hashCode());
+	result = prime * result + ((nomeMedico == null) ? 0 : nomeMedico.hashCode());
 	return result;
 }
+
+
 
 @Override
 public boolean equals(Object obj) {
@@ -84,21 +89,25 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Medico other = (Medico) obj;
-	if (especialidade == null) {
-		if (other.especialidade != null)
+	if (crm == null) {
+		if (other.crm != null)
 			return false;
-	} else if (!especialidade.equals(other.especialidade))
+	} else if (!crm.equals(other.crm))
 		return false;
 	if (idMedico == null) {
 		if (other.idMedico != null)
 			return false;
 	} else if (!idMedico.equals(other.idMedico))
 		return false;
+	if (nomeMedico == null) {
+		if (other.nomeMedico != null)
+			return false;
+	} else if (!nomeMedico.equals(other.nomeMedico))
+		return false;
 	return true;
 }
- 
-   
-	 
+
+
     
     
 	

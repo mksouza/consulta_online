@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name = "especialidade")
 public class Especialidade {
@@ -19,6 +21,20 @@ public class Especialidade {
 	
 	@Column(name = "nome_especialidade")
 	private String nomeEspecialidade;
+	
+	
+
+
+
+	public Especialidade(Long idEspecialidade, String nomeEspecialidade) {
+	
+		this.idEspecialidade = idEspecialidade;
+		this.nomeEspecialidade = nomeEspecialidade;
+	}
+
+	public Especialidade() {
+		super();
+	}
 
 	public Long getIdEspecialidade() {
 		return idEspecialidade;
@@ -41,6 +57,7 @@ public class Especialidade {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((idEspecialidade == null) ? 0 : idEspecialidade.hashCode());
+		result = prime * result + ((nomeEspecialidade == null) ? 0 : nomeEspecialidade.hashCode());
 		return result;
 	}
 
@@ -58,9 +75,24 @@ public class Especialidade {
 				return false;
 		} else if (!idEspecialidade.equals(other.idEspecialidade))
 			return false;
+		if (nomeEspecialidade == null) {
+			if (other.nomeEspecialidade != null)
+				return false;
+		} else if (!nomeEspecialidade.equals(other.nomeEspecialidade))
+			return false;
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Especialidade [idEspecialidade=" + idEspecialidade + ", nomeEspecialidade=" + nomeEspecialidade + "]";
+	}
+
+	
+	
+  
+	
+	
 	
 
 }

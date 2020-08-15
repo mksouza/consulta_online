@@ -9,6 +9,10 @@ import com.consulta_online.tcc.model.Especialidade;
 
 
 
+
+
+
+
 public interface EspecialidadeRepository extends JpaRepository<Especialidade, Long> {
 	
 	List<Especialidade> findByIdEspecialidade(@Param("idEspecialidade")Long id);

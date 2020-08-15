@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.consulta_online.tcc.model.AgendamentoConsulta;
 
 
+
+
+
+
 @Repository
 public interface AgendamentoConsultaRepository extends JpaRepository<AgendamentoConsulta, Long>{
 	
