@@ -3,10 +3,12 @@ package com.consulta_online.tcc.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.consulta_online.tcc.model.AgendamentoConsulta;
+
 
 
 
@@ -29,9 +31,10 @@ public interface AgendamentoConsultaRepository extends JpaRepository<Agendamento
 	*/		
 	
       
-        List<AgendamentoConsulta> findByIdAgendamentoConsulta(@Param("idAgendamentoConsulta") Long id);
-	
-	
+        List<AgendamentoConsulta> findByUsersIdIn(@Param("id") List<Long>  id);
 
-
+   
+	
+    
+	  List<AgendamentoConsulta> findByUsersUsernameIn(@Param("username") List<String> username);
 }

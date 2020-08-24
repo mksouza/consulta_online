@@ -10,7 +10,7 @@ public class SignupRequest {
     private String username;
     
    
-	private Integer cpf;
+	private String cpf;
  
     @NotBlank
     @Size(max = 50)
@@ -31,11 +31,11 @@ public class SignupRequest {
         this.username = username;
     }
     
-    public Integer getCpf() {
+    public String getCpf() {
 		return cpf;
 	}
     
-    public void setCpf(Integer cpf) {
+    public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
     public String getEmail() {

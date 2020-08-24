@@ -84,12 +84,13 @@ public class AuthController {
 					.body(new MessageResponse("Error: Username is already taken!"));
 		}
 		
+		/*
 		if (userRepository.existsByCpf(signUpRequest.getCpf())) {
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponse("Erro: Este CPF  já foi Cadastrado!"));
 		}
-
+        */
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity
 					.badRequest()

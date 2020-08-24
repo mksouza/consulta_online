@@ -7,19 +7,30 @@ import org.springframework.stereotype.Repository;
 
 import com.consulta_online.tcc.model.User;
 
+import antlr.collections.List;
+
+
+
 
 
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	Optional<User> findByUsername(String username);
+	
+	Optional<User> findById(Long id);
+	
+	Optional<User> findByUsername(String  username);
 
 	Boolean existsByUsername(String username);
 	
-	Boolean existsByCpf(Integer cpf);
+	Boolean existsByCpf(String cpf);
 
 	Boolean existsByEmail(String email);
+	
+	
+    User findByUsernameContaining(String username);
+
 	
 	
 }

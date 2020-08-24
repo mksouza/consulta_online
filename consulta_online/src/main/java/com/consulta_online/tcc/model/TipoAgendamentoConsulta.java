@@ -24,12 +24,8 @@ public class TipoAgendamentoConsulta {
 	public TipoAgendamentoConsulta() {
 		
 	}
-
-	public TipoAgendamentoConsulta(Long idTipoAgendamentoConsulta, String tipo) {
-		super();
-		this.idTipoAgendamentoConsulta = idTipoAgendamentoConsulta;
-		this.tipo = tipo;
-	}
+   
+    
 
 	public Long getIdTipoAgendamentoConsulta() {
 		return idTipoAgendamentoConsulta;
@@ -47,31 +43,6 @@ public class TipoAgendamentoConsulta {
 		this.tipo = tipo;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((idTipoAgendamentoConsulta == null) ? 0 : idTipoAgendamentoConsulta.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TipoAgendamentoConsulta other = (TipoAgendamentoConsulta) obj;
-		if (idTipoAgendamentoConsulta == null) {
-			if (other.idTipoAgendamentoConsulta != null)
-				return false;
-		} else if (!idTipoAgendamentoConsulta.equals(other.idTipoAgendamentoConsulta))
-			return false;
-		return true;
-	}
-	
 	
 
 	

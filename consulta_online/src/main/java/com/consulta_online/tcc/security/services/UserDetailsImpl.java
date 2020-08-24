@@ -19,7 +19,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	private String username;
 	
-	private Integer cpf;
+	private String cpf;
 
 	private String email;
 
@@ -28,7 +28,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Long id, String username,  Integer cpf, String email, String password,
+	public UserDetailsImpl(Long id, String username,  String cpf, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
@@ -61,7 +61,7 @@ public class UserDetailsImpl implements UserDetails {
 		return id;
 	}
 	
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 

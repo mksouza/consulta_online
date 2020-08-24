@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.consulta_online.tcc.model.Especialidade;
-
+import com.consulta_online.tcc.model.User;
 import com.consulta_online.tcc.repository.EspecialidadeRepository;
 
 @Service
@@ -35,5 +35,19 @@ public class EspecialidadeService {
 		
 		return especialidadeRepository.findByIdEspecialidade(id);
 	}
+	
+	
+	public Especialidade salvar(Especialidade espec) {
+		return especialidadeRepository.save(espec);
+	}
+	
+	
+
+	
+	  public void deletar(Long id) {
+		  
+		  especialidadeRepository.deleteById(id);
+		  
+	  }
 
 }

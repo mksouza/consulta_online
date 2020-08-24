@@ -23,15 +23,16 @@ public class AgendamentoConsultaService {
 		
 	}
 	
-	
-	
-	public List<AgendamentoConsulta> listarporId(Long id)  {
+	public List<AgendamentoConsulta> listarporId(List<Long>  id) {
 		
-		return agendamentoConsultaRepository.findByIdAgendamentoConsulta(id);
-		
-		
+		return agendamentoConsultaRepository.findByUsersIdIn(id);	
 	}
 	
+
+	public List<AgendamentoConsulta> listarporNome(List<String>  username) {
+		
+		return agendamentoConsultaRepository.findByUsersUsernameIn(username);
+	}
 	
 	public List<AgendamentoConsulta> listarTodos(){
 		
@@ -41,6 +42,21 @@ public class AgendamentoConsultaService {
    public AgendamentoConsulta salvar(AgendamentoConsulta consulta) {
 	   return agendamentoConsultaRepository.save(consulta);
    }
+   
+  
+   public AgendamentoConsulta atualizar(AgendamentoConsulta consulta) {
+	   return agendamentoConsultaRepository.save(consulta);
+   }
+   
+  public void deletar( Long id) {
+	  
+	  agendamentoConsultaRepository.deleteById(id);
+	  
+  }
+  
+  
+ 
+
 	
 	
 }

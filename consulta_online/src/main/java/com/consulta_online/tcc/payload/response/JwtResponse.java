@@ -6,12 +6,12 @@ public class JwtResponse {
 	private String token;
 	private String type = "Bearer";
 	private Long id;
-	private Integer cpf;
+	private String cpf;
 	private String username;
 	private String email;
 	private List<String> roles;
 
-	public JwtResponse(String accessToken, Long id, String username, Integer cpf, String email, List<String> roles) {
+	public JwtResponse(String accessToken, Long id, String username, String cpf, String email, List<String> roles) {
 		this.token = accessToken;
 		this.id = id;
 		this.username = username;
@@ -44,11 +44,11 @@ public class JwtResponse {
 		this.id = id;
 	}
 	
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 	
-	public void setCpf(Integer cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 

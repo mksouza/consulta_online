@@ -34,4 +34,14 @@ public class MedicoService {
 		return medicoRepository.findByIdMedico(id);
 	}
 
+	public Medico salvar(Medico med) {
+		return medicoRepository.save(med);
+	}
+	
+
+	 public void deletar(Long id) {
+		  
+		  medicoRepository.deleteById(id);
+		  
+	  }
 }

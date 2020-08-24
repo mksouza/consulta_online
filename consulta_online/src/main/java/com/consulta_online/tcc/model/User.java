@@ -26,7 +26,7 @@ public class User {
 	private String username;
 	
 	
-	private Integer cpf;
+	private String cpf;
 
 	@NotBlank
 	@Size(max = 50)
@@ -47,7 +47,7 @@ public class User {
 	public User() {
 	}
 
-	public User(String username, Integer cpf, String email, String password) {
+	public User(String username, String cpf, String email, String password) {
 		this.username = username;
 		this.cpf = cpf;
 		this.email = email;
@@ -71,11 +71,11 @@ public class User {
 		this.username = username;
 	}
 	
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Integer cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
